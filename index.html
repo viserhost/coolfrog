@@ -24,20 +24,41 @@
       })(window, document, "script", "dataLayer", "GTM-PKZG3L8R");
     </script>
     <!-- End Google Tag Manager -->
-    <script type="module" crossorigin src="/assets/index-DLVzlH5T.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-Dyl-bBIT.css">
   </head>
   <body>
     <div id="root"></div>
+    <script type="module">
+      // Initialize the Telegram Web App
+      const tg = window.Telegram.WebApp;
+
+      // Function to handle the /start command
+      function handleStartCommand() {
+        // You can customize this logic as per your requirement
+        const user = tg.initDataUnsafe.user; // Get user info
+        const userId = user.id; // Telegram user ID
+        const userName = user.first_name; // User's first name
+
+        // Show a welcome message or any relevant information
+        document.getElementById("root").innerHTML = `<h1>Welcome, ${userName}!</h1>`;
+      }
+
+      // Check if the app is launched from Telegram
+      if (tg.initData) {
+        handleStartCommand();
+      } else {
+        // Handle error or show a message for non-Telegram usage
+        document.getElementById("root").innerHTML = `<h1>This app is only available on Telegram.</h1>`;
+      }
+    </script>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
+    <noscript>
+      <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-PKZG3L8R"
         height="0"
         width="0"
         style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+      ></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
   </body>
 </html>
